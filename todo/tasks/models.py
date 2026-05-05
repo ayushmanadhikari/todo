@@ -21,7 +21,6 @@ class taskStatus(models.TextChoices):
     completed = 'completed'
 
 
-
 ##main model
 class tasks(models.Model):
     task_name = models.CharField(max_length=50)
