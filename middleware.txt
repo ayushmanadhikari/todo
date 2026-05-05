@@ -1,0 +1,21 @@
+HOOKS
+Hooks are special methods in Django middleware that are called at specific points during the request-response cycle. 
+They allow inspection, modification, or short-circuiting of requests and responses in a modular and reusable way.
+
+process_request(request): Runs before the view executes.
+Can inspect or modify the request. Returning an HttpResponse here stops further processing.
+process_view(request, view_func, view_args, view_kwargs): 
+Runs after URL resolution but before the view executes. Useful for performing view-specific checks or modifications.
+process_response(request, response): 
+Runs after the view has returned a response (or after process_exception). Allows final modifications before sending the response back to the client
+
+
+STATELESS VS STATEFULL AUTHENTICATION
+Stateful authentication stores user session data on the server (e.g., in memory or database), requiring it to remember users between requests. Conversely, stateless authentication uses self-contained tokens (like JWT) sent by the client with each request, allowing the server to verify users without storing session data.
+
+
+Using Authentication Middleware in django requires SESSION Middleware because it is stateful authentication and thus requires Session to be stored in serverside which is handled by SESSION Middleware. 
+
+We can by pass this by using JWT authentication which is stateless and thus not require sessions to be stored in the server(no sesseion middleware). --> used with APIs. 
+
+In Django, class Meta is an inner class used to provide metadata about a model, form, or serializer. It is a "configuration box" that defines how these components should behave without directly adding fields to them.
